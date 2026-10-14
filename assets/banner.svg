@@ -1,0 +1,241 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a14" />
+      <stop offset="50%" stop-color="#0d1424" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <!-- Glowing Accent Gradients -->
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#4facfe" />
+      <stop offset="100%" stop-color="#00c6ff" />
+    </linearGradient>
+
+    <linearGradient id="violetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7928ca" />
+      <stop offset="100%" stop-color="#ff0080" />
+    </linearGradient>
+
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38ef7d" />
+      <stop offset="100%" stop-color="#11998e" />
+    </linearGradient>
+
+    <radialGradient id="radialCore" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.18" />
+      <stop offset="60%" stop-color="#7928ca" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#070a14" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Dynamic Grid Pattern -->
+    <pattern id="cyberGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 242, 254, 0.07)" stroke-width="1" />
+      <circle cx="40" cy="0" r="1.5" fill="rgba(0, 242, 254, 0.25)" />
+    </pattern>
+  </defs>
+
+  <style>
+    .title-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .pill-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.8px;
+    }
+    .scan-beam {
+      animation: scan 8s ease-in-out infinite alternate;
+    }
+    .pulse-ring {
+      animation: pulse 4s ease-in-out infinite;
+      transform-origin: center;
+    }
+    .float-node-1 {
+      animation: float1 6s ease-in-out infinite alternate;
+    }
+    .float-node-2 {
+      animation: float2 7s ease-in-out infinite alternate;
+    }
+    @keyframes scan {
+      0% { transform: translateY(0px); opacity: 0.15; }
+      50% { opacity: 0.45; }
+      100% { transform: translateY(320px); opacity: 0.15; }
+    }
+    @keyframes pulse {
+      0% { r: 70px; opacity: 0.2; }
+      50% { r: 95px; opacity: 0.45; }
+      100% { r: 70px; opacity: 0.2; }
+    }
+    @keyframes float1 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(15px, -12px); }
+    }
+    @keyframes float2 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-18px, 14px); }
+    }
+  </style>
+
+  <!-- Deep Background -->
+  <rect width="1200" height="360" fill="url(#bgGrad)" />
+
+  <!-- Cybernetic Grid Overlay -->
+  <rect width="1200" height="360" fill="url(#cyberGrid)" />
+
+  <!-- Central Radial Ambience -->
+  <rect width="1200" height="360" fill="url(#radialCore)" />
+
+  <!-- Dynamic Ambient Animated Geometry (Kept behind foreground text) -->
+  <g opacity="0.6">
+    <!-- Moving Laser Scan Line -->
+    <line x1="0" y1="20" x2="1200" y2="20" stroke="url(#primaryGrad)" stroke-width="1.5" class="scan-beam">
+      <animate attributeName="y1" values="20;340;20" dur="9s" repeatCount="indefinite" />
+      <animate attributeName="y2" values="20;340;20" dur="9s" repeatCount="indefinite" />
+    </line>
+
+    <!-- Left Radar / Physics Node Circle -->
+    <g transform="translate(130, 180)">
+      <circle cx="0" cy="0" r="85" fill="none" stroke="rgba(0, 242, 254, 0.2)" stroke-dasharray="4 6">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="25s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="0" cy="0" r="55" fill="none" stroke="rgba(121, 40, 202, 0.3)" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="30" fill="rgba(0, 242, 254, 0.08)" />
+      <!-- Orbital Satellite -->
+      <circle cx="55" cy="0" r="4" fill="#00f2fe" filter="url(#softGlow)">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="7s" repeatCount="indefinite" />
+      </circle>
+      <!-- Simulation Axis Reticle -->
+      <line x1="-95" y1="0" x2="95" y2="0" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1" />
+      <line x1="0" y1="-95" x2="0" y2="95" stroke="rgba(0, 242, 254, 0.15)" stroke-width="1" />
+    </g>
+
+    <!-- Right Kinematic Coordinate Gimbal -->
+    <g transform="translate(1070, 180)">
+      <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(255, 0, 128, 0.2)" stroke-dasharray="8 5">
+        <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="20s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="0" cy="0" r="50" fill="none" stroke="rgba(0, 242, 254, 0.3)" stroke-width="1.2" />
+      <circle cx="0" cy="0" r="22" fill="rgba(121, 40, 202, 0.12)" />
+      <polygon points="0,-35 30,20 -30,20" fill="none" stroke="url(#primaryGrad)" stroke-width="1.5">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="15s" repeatCount="indefinite" />
+      </polygon>
+    </g>
+
+    <!-- Dynamic Flow Waves (Sim-to-Real bridge animation) -->
+    <path d="M 240 280 Q 400 310 600 285 T 960 290" fill="none" stroke="rgba(0, 242, 254, 0.25)" stroke-width="1.5" stroke-dasharray="6 8">
+      <animate attributeName="stroke-dashoffset" from="0" to="100" dur="10s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+  <!-- High-Tech Frame Border -->
+  <rect x="15" y="15" width="1170" height="330" rx="12" fill="none" stroke="rgba(0, 242, 254, 0.25)" stroke-width="1" />
+  <path d="M 15 45 L 15 15 L 45 15" fill="none" stroke="#00f2fe" stroke-width="3" />
+  <path d="M 1155 15 L 1185 15 L 1185 45" fill="none" stroke="#00f2fe" stroke-width="3" />
+  <path d="M 15 315 L 15 345 L 45 345" fill="none" stroke="#00f2fe" stroke-width="3" />
+  <path d="M 1155 345 L 1185 345 L 1185 315" fill="none" stroke="#00f2fe" stroke-width="3" />
+
+  <!-- FOREGROUND CONTENT: Header Tag, Title, Subtitle, Feature Badges (Always in Foreground) -->
+
+  <!-- Status / Ecosystem Tag -->
+  <g transform="translate(600, 68)">
+    <rect x="-165" y="-14" width="330" height="28" rx="14" fill="rgba(12, 25, 48, 0.9)" stroke="rgba(0, 242, 254, 0.45)" stroke-width="1.2" />
+    <circle cx="-140" cy="0" r="4.5" fill="#38ef7d">
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text text-anchor="middle" y="4" class="pill-text" fill="#88e5ff">CURATED ROBOTICS ECOSYSTEM</text>
+  </g>
+
+  <!-- Main Title -->
+  <g transform="translate(600, 142)">
+    <!-- Subtle drop shadow layer for high contrast readability -->
+    <text text-anchor="middle" y="2" class="title-text" fill="#000000" opacity="0.8">Awesome Simulation Platforms For Robots</text>
+    <text text-anchor="middle" y="0" class="title-text" fill="url(#primaryGrad)" filter="url(#softGlow)">Awesome Simulation Platforms For Robots</text>
+  </g>
+
+  <!-- Subtitle -->
+  <g transform="translate(600, 185)">
+    <text text-anchor="middle" class="subtitle-text" fill="#e2e8f0">
+      <tspan fill="#38ef7d">Physics Engines</tspan> • 
+      <tspan fill="#ffffff">Sensor Modeling</tspan> • 
+      <tspan fill="#00f2fe">Embodied AI</tspan> • 
+      <tspan fill="#ff0080">Sim-to-Real Transfer</tspan>
+    </text>
+  </g>
+
+  <!-- Tag Pills: Leading Tools & Frameworks -->
+  <g transform="translate(600, 240)">
+    <!-- Pill 1: Isaac Sim -->
+    <g transform="translate(-365, 0)">
+      <rect x="0" y="0" width="112" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(118, 185, 0, 0.7)" stroke-width="1.2" />
+      <text x="56" y="18" text-anchor="middle" class="pill-text" fill="#a3e635">⚡ Isaac Sim</text>
+    </g>
+
+    <!-- Pill 2: MuJoCo -->
+    <g transform="translate(-240, 0)">
+      <rect x="0" y="0" width="100" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(56, 189, 248, 0.7)" stroke-width="1.2" />
+      <text x="50" y="18" text-anchor="middle" class="pill-text" fill="#38bdf8">🦾 MuJoCo</text>
+    </g>
+
+    <!-- Pill 3: Gazebo Sim -->
+    <g transform="translate(-128, 0)">
+      <rect x="0" y="0" width="112" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(249, 115, 22, 0.7)" stroke-width="1.2" />
+      <text x="56" y="18" text-anchor="middle" class="pill-text" fill="#fb923c">🌐 Gazebo Sim</text>
+    </g>
+
+    <!-- Pill 4: Genesis -->
+    <g transform="translate(-4, 0)">
+      <rect x="0" y="0" width="105" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(168, 85, 247, 0.7)" stroke-width="1.2" />
+      <text x="52" y="18" text-anchor="middle" class="pill-text" fill="#c084fc">✨ Genesis</text>
+    </g>
+
+    <!-- Pill 5: Drake -->
+    <g transform="translate(113, 0)">
+      <rect x="0" y="0" width="95" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(236, 72, 153, 0.7)" stroke-width="1.2" />
+      <text x="47" y="18" text-anchor="middle" class="pill-text" fill="#f472b6">📐 Drake</text>
+    </g>
+
+    <!-- Pill 6: Webots -->
+    <g transform="translate(220, 0)">
+      <rect x="0" y="0" width="102" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(45, 212, 191, 0.7)" stroke-width="1.2" />
+      <text x="51" y="18" text-anchor="middle" class="pill-text" fill="#2dd4bf">🤖 Webots</text>
+    </g>
+
+    <!-- Pill 7: CARLA -->
+    <g transform="translate(334, 0)">
+      <rect x="0" y="0" width="98" height="28" rx="6" fill="rgba(15, 23, 42, 0.85)" stroke="rgba(250, 204, 21, 0.7)" stroke-width="1.2" />
+      <text x="49" y="18" text-anchor="middle" class="pill-text" fill="#facc15">🚗 CARLA</text>
+    </g>
+  </g>
+
+  <!-- Bottom Metric / Focus Ribbon -->
+  <g transform="translate(600, 308)">
+    <text text-anchor="middle" class="pill-text" fill="#94a3b8" font-size="11">
+      Open-Source Solvers &amp; Cloud SaaS • Reinforcement Learning • Multi-Body Dynamics • Autonomous Vehicles &amp; Drones
+    </text>
+  </g>
+</svg>
